@@ -1,11 +1,18 @@
 import express from 'express'
-import notFoundRoute from './middleware/notFound'
+import globalErrorHandler from './middleware/globalErrorHandler'
+import notFound from './middleware/notFound'
 export const app = express()
 
 app.use(express.json())
 
-app.use(notFoundRoute)
+
+
+app.use(globalErrorHandler)
+
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+
+app.use(notFound)
 

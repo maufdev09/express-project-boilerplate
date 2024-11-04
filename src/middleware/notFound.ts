@@ -1,13 +1,11 @@
-import  {  Request, Response } from 'express'
+import { Request, Response, NextFunction,  } from 'express';
 
-const notFoundRoute=(req:Request,res:Response)=>{
+const notFound = (req: Request, res: Response, next: NextFunction) => {
+  return res.status(404).json({
+    success: false,
+    message: "API Not Found",
+    error: "",
+  });
+};
 
-    return res.status(404).json({
-      success:false,
-      message:"Api Not Found",
-      error:"",
-    })
-    }
-
-
-    export default notFoundRoute
+export default notFound;

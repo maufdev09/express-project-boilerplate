@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction,  } from 'express';
 
 const notFound = (req: Request, res: Response, next: NextFunction) => {
-  return res.status(404).json({
+  res.status(404).json({
     success: false,
     message: "API Not Found",
     error: "",

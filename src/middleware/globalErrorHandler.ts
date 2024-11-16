@@ -1,25 +1,21 @@
-import { ErrorRequestHandler } from "express";
-import { TErrorSources } from "../interface/error.interface";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-unused-vars */
 
-const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
+import { NextFunction, Request, Response } from "express";
 
-let statusCode=500;
-let message="Something went wrong";
-const errorSources:TErrorSources=[{
-    path:"",
-    message:"Something went wrong "
-}]
-
-if (err.name === "ValidationError") {
-    const simplified=handleValidationError(err)
-    
-}
-
-
-  res.status(500).json({
+const globalErrorHandler=(
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction
+):void => {
+  const statusCode = 500;
+  const message = err.message || "Something went wrong";
+ res.status(statusCode).json({
     success: false,
-    message: "Something went wrong ",
-    err,
+    message,
+    error: err,
   });
 };
 

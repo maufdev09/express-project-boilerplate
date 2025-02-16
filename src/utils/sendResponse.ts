@@ -14,3 +14,6 @@ const sendResponse= <T>(res: Response, data:{
 
 
 export default sendResponse;
+
+
+// sendResponse(res: Response, data: { statusCode: number; success: boolean; message?: string; data: unknown; }): void
